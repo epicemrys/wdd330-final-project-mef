@@ -1,0 +1,21 @@
+{
+  "name": "wdd330-final-project-mef",
+  "version": "1.0.0",
+  "description": "My Final Web Application Project: Marriage Event Finder.",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epicemrys/wdd330-final-project-mef.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/epicemrys/wdd330-final-project-mef/issues"
+  },
+  "homepage": "https://github.com/epicemrys/wdd330-final-project-mef#readme"
+}

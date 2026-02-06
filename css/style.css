@@ -1,0 +1,73 @@
+/* Graphic Identity */
+:root {
+    --pink-bg: #FFE4E1;
+    --deep-pink: #FF69B4;
+    --gold: #DAA520;
+    --white: #FFFFFF;
+    --gray: #808080;
+}
+
+body {
+    background-color: var(--pink-bg);
+    font-family: 'Arial', sans-serif;
+    color: var(--gray);
+}
+
+h1, h2 {
+    font-family: 'Dancing Script', cursive;
+    color: var(--deep-pink);
+}
+
+.navbar-brand {
+    font-family: 'Dancing Script', cursive;
+    color: var(--gold) !important;
+}
+
+.btn-primary {
+    background-color: var(--gold);
+    border-color: var(--gold);
+}
+
+.card {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.btn:hover {
+    animation: bounce 1s;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .navbar-nav {
+        flex-direction: column;
+    }
+}
+
+/* Map */
+#map {
+    height: 300px;
+    width: 100%;
+}
