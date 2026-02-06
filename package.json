@@ -17,5 +17,6 @@
   "bugs": {
     "url": "https://github.com/epicemrys/wdd330-final-project-mef/issues"
   },
-  "homepage": "https://github.com/epicemrys/wdd330-final-project-mef#readme"
+  "homepage": "https://github.com/epicemrys/wdd330-final-project-mef#readme",
+  "type": "commonjs"
 }

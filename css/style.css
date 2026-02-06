@@ -21,32 +21,65 @@ h1, h2 {
 .navbar-brand {
     font-family: 'Dancing Script', cursive;
     color: var(--gold) !important;
+    font-size: 24px !important;
+}
+
+.nav-link {
+    color: var(--gray) !important;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--deep-pink) !important;
+}
+
+.nav-link.active {
+    color: var(--deep-pink) !important;
+    border-bottom: 3px solid var(--gold);
+    font-weight: 600;
 }
 
 .btn-primary {
     background-color: var(--gold);
     border-color: var(--gold);
+    color: #333;
+}
+
+.btn-primary:hover {
+    background-color: #cc9100;
+    border-color: #cc9100;
 }
 
 .card {
     background-color: var(--white);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.card-title {
+    color: var(--deep-pink);
 }
 
 /* Animations */
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from { 
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .fade-in {
-    animation: fadeIn 1s ease-in;
+    animation: fadeIn 0.6s ease-in;
 }
 
 @keyframes bounce {
@@ -56,18 +89,102 @@ h1, h2 {
 }
 
 .btn:hover {
-    animation: bounce 1s;
+    animation: bounce 0.6s;
+}
+
+/* Modal Styles */
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    background-color: var(--pink-bg);
+    border-bottom: 2px solid var(--gold);
+}
+
+.modal-title {
+    color: var(--deep-pink);
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+}
+
+/* Forms */
+.form-label {
+    color: var(--deep-pink);
+    font-weight: 500;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 0.2rem rgba(218, 165, 32, 0.25);
+}
+
+/* Loading Spinner */
+.spinner-border {
+    color: var(--gold);
+}
+
+/* Toast Styles */
+.toast.bg-success {
+    background-color: #28a745 !important;
+}
+
+.toast.bg-danger {
+    background-color: #dc3545 !important;
+}
+
+.toast.bg-warning {
+    background-color: #ffc107 !important;
+}
+
+.toast.bg-info {
+    background-color: #17a2b8 !important;
 }
 
 /* Responsive */
-@media (max-width: 576px) {
+@media (max-width: 768px) {
     .navbar-nav {
-        flex-direction: column;
+        flex-direction: row;
+    }
+    
+    .card {
+        margin-bottom: 15px;
+    }
+    
+    .modal-dialog {
+        margin: 10px;
     }
 }
 
-/* Map */
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 18px;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+}
+
+/* Map Styles */
 #map {
-    height: 300px;
     width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    margin: 20px 0;
 }
