@@ -9,3 +9,6 @@ export function initMap(mapId, lat, lng) {
         map
     });
 }
+
+
+AIzaSyBGm4pv2fdu4X2z7c2ta1ToLv_SRbBpRdc

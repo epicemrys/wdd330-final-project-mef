@@ -1,5 +1,5 @@
 // api.js - API fetches
-const TICKETMASTER_KEY = 'TICKETMASTER_KEY'; // I'll eplace with my key after setup
+const TICKETMASTER_KEY = 'qlTGz6aOmVZYTvwO7q041adJ1Ku7OuRO'; // Ticketmaster API Key
 
 export async function fetchEvents(query, type = '') {
     let url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${TICKETMASTER_KEY}&size=20&sort=date,asc`;
