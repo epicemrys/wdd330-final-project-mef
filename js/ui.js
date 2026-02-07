@@ -95,13 +95,28 @@ export function displayEventDetails(event, mapFunc) {
     const modal = new bootstrap.Modal(modalElement);
     modal.show();
 
-    // Initialize map if location available
+    // Initialize map AFTER modal is fully shown (when it has dimensions)
     if (venueLocation && mapFunc) {
-        try {
-            mapFunc('map', parseFloat(venueLocation.latitude), parseFloat(venueLocation.longitude));
-        } catch (error) {
-            console.error('Failed to initialize map:', error);
-        }
+        modalElement.addEventListener('shown.bs.modal', () => {
+            try {
+                mapFunc('map', parseFloat(venueLocation.latitude), parseFloat(venueLocation.longitude));
+            } catch (error) {
+                console.error('Failed to initialize map:', error);
+                // Show fallback message in map div
+                const mapDiv = document.getElementById('map');
+                if (mapDiv) {
+                    mapDiv.innerHTML = '<div class="alert alert-warning">Map unavailable. Check your Google Maps API key or enable billing.</div>';
+                }
+            }
+        });
+    } else {
+        // No location data - hide map div or show message
+        modalElement.addEventListener('shown.bs.modal', () => {
+            const mapDiv = document.getElementById('map');
+            if (mapDiv) {
+                mapDiv.innerHTML = '<div class="alert alert-info">Location information not available for this event.</div>';
+            }
+        });
     }
 
     // Share functionality
