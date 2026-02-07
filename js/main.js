@@ -11,10 +11,19 @@ function loadGoogleMaps() {
         console.warn('Google Maps API key not configured. Map features will not work.');
         return;
     }
+    
+    // Create a global callback for when Maps loads
+    window.initGoogleMaps = function() {
+        console.log('Google Maps loaded successfully');
+    };
+    
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEYS.GOOGLE_MAPS_KEY}`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEYS.GOOGLE_MAPS_KEY}&callback=initGoogleMaps`;
     script.async = true;
     script.defer = true;
+    script.onerror = () => {
+        console.error('Failed to load Google Maps. Maps will be disabled.');
+    };
     document.head.appendChild(script);
 }
 

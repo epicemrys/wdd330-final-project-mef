@@ -98,15 +98,20 @@ export function displayEventDetails(event, mapFunc) {
     // Initialize map AFTER modal is fully shown (when it has dimensions)
     if (venueLocation && mapFunc) {
         modalElement.addEventListener('shown.bs.modal', () => {
+            const mapDiv = document.getElementById('map');
+            if (!mapDiv) return;
+            
+            // Check if Google Maps is available
+            if (!window.google || !window.google.maps) {
+                mapDiv.innerHTML = '<div class="alert alert-warning"><strong>Map Unavailable</strong><br>Google Maps could not be loaded. This may be due to API key issues or billing requirements.</div>';
+                return;
+            }
+            
             try {
                 mapFunc('map', parseFloat(venueLocation.latitude), parseFloat(venueLocation.longitude));
             } catch (error) {
                 console.error('Failed to initialize map:', error);
-                // Show fallback message in map div
-                const mapDiv = document.getElementById('map');
-                if (mapDiv) {
-                    mapDiv.innerHTML = '<div class="alert alert-warning">Map unavailable. Check your Google Maps API key or enable billing.</div>';
-                }
+                mapDiv.innerHTML = '<div class="alert alert-warning"><strong>Map Error</strong><br>Unable to display map for this location.</div>';
             }
         });
     } else {
@@ -114,7 +119,7 @@ export function displayEventDetails(event, mapFunc) {
         modalElement.addEventListener('shown.bs.modal', () => {
             const mapDiv = document.getElementById('map');
             if (mapDiv) {
-                mapDiv.innerHTML = '<div class="alert alert-info">Location information not available for this event.</div>';
+                mapDiv.innerHTML = '<div class="alert alert-info"><strong>Location Information Unavailable</strong><br>No coordinates available for this event.</div>';
             }
         });
     }
